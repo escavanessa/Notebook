@@ -14,7 +14,6 @@ function App() {
     <>
     <h1>why are you so stupid</h1>
     <TaskList addTask={addTask}/>
-    
     </>
   )
 }
