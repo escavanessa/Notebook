@@ -16,53 +16,81 @@ function App() {
     }
   ]);
 
-  const addTask = () => {
-    const newTask = [...tasks];
+  const addTask = (value) => {
+    const newTask = [...tasks, { title: value, completed: false }];
     setTasks(newTask);
   }
 
 
-  const inputForm = () => {
+
+  const isCompleted = (index) => {
+    const newTask = [...tasks]
+    const thisTask = newTask[index]
+    if (thisTask.completed === false) {
+      thisTask.completed = true
+    } else {
+      thisTask.completed = false
+    }
+    setTasks(newTask);
+  }
+
+
+  const InputForm = () => {
+    const [value, setValue] = useState("")
+
+
+
+    const handleSubmit = (e) => {
+      e.preventDefault()
+      console.log(value)
+      addTask(value)
+    }
+
+
+
     return (
       <div className='input-wrapper'>
-        <form onSubmit={handleSubmite} >
+        <form onSubmit={handleSubmit} >
           <input
             type='text'
-            id={index}
             value={value}
-            onChange={e => setValue(e.target)}
+            onChange={e => setValue(e.target.value)}
             placeholder='write a task'
           />
-          <button type='submite' onClick={addTask}>Add</button>
+          <button type='submit'>Add</button>
         </form>
       </div>
     );
   };
-  
-  
-  
+
+
+
   const TaskList = () => {
     return (
       <>
         <h1>return a map</h1>
         {tasks.map((task, index) =>
-          <ul key={index}>
-            <li key={index}>
-                <span key={index}>{task.title}, is complete? {task.completed + ''}</span>
-            </li>
-          </ul>
+          <>
+            <span className='item-title'>{task.title}</span>
+            <input className='checkbox'
+              type='checkbox'
+              checked={task.completed}
+              onChange={() => isCompleted(index)}
+            />
+          </>
         )}
-  
+
       </>
     )
   }
-  
-  
+
+
 
   return (
     <>
-    <h1>why are you so stupid</h1>
-    <TaskList addTask={addTask}/>
+      <h1>why are you so stupid</h1>
+      <TaskList addTask={addTask} />
+      <InputForm />
     </>
   )
 }
