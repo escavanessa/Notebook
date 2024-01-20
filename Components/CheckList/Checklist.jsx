@@ -19,8 +19,11 @@ const Checklist = () => {
         setInput('');
     }
 
-    function handleDelete() {
-
+    function handleDelete(index) {
+        const removeItem = todo.filter((todo) => {
+            return todo.index !== index;
+        });
+        setTodo(removeItem)
     }
 
   return (
