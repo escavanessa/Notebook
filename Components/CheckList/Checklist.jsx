@@ -31,8 +31,7 @@ const Checklist = () => {
     value={input}
     onChange={handleChange}
     />
-    <button
-    onClick={handleAdd}>Add</button>
+    <button onClick={handleAdd}>Add</button>
 
     <ul>
         {todo.map((todo, index) => (
