@@ -20,8 +20,8 @@ const Checklist = () => {
     }
 
     function handleDelete(index) {
-        const removeItem = todo.filter((todo) => {
-            return todo.index !== index;
+        const removeItem = todo.filter((todo, i) => {
+            return i !== index;
         });
         setTodo(removeItem)
     }

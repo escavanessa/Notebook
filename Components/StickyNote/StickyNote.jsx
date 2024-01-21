@@ -9,16 +9,20 @@ import './StickyNote.css'
 //and when you hit enter or maybe save you saves the sticky, every add - adds another sticky. 
 
 
+
+
+
 const StickyNote = () => {
   const [sinput, setSinput] = useState('');
   const [sticky, setSticky] = useState([]);
+  const [color, setColor] = useState([]);
 
 
     function handleChange(e) {
       setSinput(e.target.value)
     }
 
-    function handleClick() {
+    function handleAdd() {
       if(sinput === '') {
         return;
       }
@@ -26,8 +30,17 @@ const StickyNote = () => {
       setSinput('')
     }
 
-    function handleDelete() {
-      
+    function handleDelete(index) {
+      const removeSticky = sticky.filter((sticky, i) => {
+        return i !== index
+      });
+      setSticky(removeSticky)
+    }
+
+    function randomColor() {
+      const colors = ['#fdba74','#7dd3fc','#fcd34d','#f0abfc','#86efac','#fca5a5'];
+      const randomColor = Math.floor(Math.random() * colors.length)
+      return colors[randomColor]
     }
 
 
@@ -40,13 +53,13 @@ const StickyNote = () => {
     placeholder='add sticky'
     ></input>
 
-    <button onClick={handleClick}>+</button>
+    <button onClick={handleAdd}>+</button>
 
     {
       sticky.map((stick, index) => (
-        <div className='sticky-wrapper' key={index}>
+        <div className='sticky-wrapper' key={index} style={{backgroundColor: randomColor()}}>
           <h2>{stick}</h2>
-          <button onClick={() => handleDelete}></button>
+          <button onClick={() => handleDelete(index)}>delete</button>
         </div>
       ))
     }
