@@ -26,7 +26,7 @@ const StickyNote = () => {
       if(sinput === '') {
         return;
       }
-      setSticky([...sticky, sinput]);
+      setSticky([...sticky, {sinput: sinput, color: randomColor()}]);
       setSinput('')
     }
 
@@ -57,8 +57,8 @@ const StickyNote = () => {
 
     {
       sticky.map((stick, index) => (
-        <div className='sticky-wrapper' key={index} style={{backgroundColor: randomColor()}}>
-          <h2>{stick}</h2>
+        <div className='sticky-wrapper' key={index} style={{backgroundColor: stick.color}}>
+          <h2>{stick.sinput}</h2>
           <button onClick={() => handleDelete(index)}>delete</button>
         </div>
       ))

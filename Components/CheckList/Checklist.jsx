@@ -15,8 +15,9 @@ const Checklist = () => {
         if (input === '') {
             return;
         }
-        setTodo([...todo, input])
+        setTodo([...todo, {input: input}])
         setInput('');
+        console.log(todo)
     }
 
     function handleDelete(index) {
@@ -38,7 +39,7 @@ const Checklist = () => {
 
     <ul>
         {todo.map((todo, index) => (
-            <li key={index}>{todo}
+            <li key={index}>{todo.input}
             <button onClick={ () => handleDelete(index)}>Delete</button>
             </li>
         ))}
