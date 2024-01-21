@@ -39,7 +39,7 @@ const Checklist = () => {
     <ul>
         {todo.map((todo, index) => (
             <li key={index}>{todo}
-            <button onClick={handleDelete}>Delete</button>
+            <button onClick={ () => handleDelete(index)}>Delete</button>
             </li>
         ))}
     </ul>

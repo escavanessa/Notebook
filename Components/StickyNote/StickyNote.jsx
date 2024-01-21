@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import './StickyNote.css'
 
 //container the contains all the stick notes. a map that returns whats inside the sticky state in its own seperate box.
 //you can also delete the sticky and edit. 
@@ -9,8 +10,47 @@ import React from 'react'
 
 
 const StickyNote = () => {
+  const [sinput, setSinput] = useState('');
+  const [sticky, setSticky] = useState([]);
+
+
+    function handleChange(e) {
+      setSinput(e.target.value)
+    }
+
+    function handleClick() {
+      if(sinput === '') {
+        return;
+      }
+      setSticky([...sticky, sinput]);
+      setSinput('')
+    }
+
+    function handleDelete() {
+      
+    }
+
+
+
   return (
     <>
+    <input 
+    value={sinput}
+    onChange={handleChange}
+    placeholder='add sticky'
+    ></input>
+
+    <button onClick={handleClick}>+</button>
+
+    {
+      sticky.map((stick, index) => (
+        <div className='sticky-wrapper' key={index}>
+          <h2>{stick}</h2>
+          <button onClick={() => handleDelete}></button>
+        </div>
+      ))
+    }
+
     </>
   )
 }
