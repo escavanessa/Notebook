@@ -15,55 +15,54 @@ import './StickyNote.css'
 const StickyNote = () => {
   const [sinput, setSinput] = useState('');
   const [sticky, setSticky] = useState([]);
-  const [color, setColor] = useState([]);
 
 
-    function handleChange(e) {
-      setSinput(e.target.value)
+  function handleChange(e) {
+    setSinput(e.target.value)
+  }
+
+  function handleAdd() {
+    if (sinput === '') {
+      return;
     }
+    setSticky([...sticky, { sinput: sinput, color: randomColor() }]);
+    setSinput('')
+  }
 
-    function handleAdd() {
-      if(sinput === '') {
-        return;
-      }
-      setSticky([...sticky, {sinput: sinput, color: randomColor()}]);
-      setSinput('')
-    }
+  function handleDelete(index) {
+    const removeSticky = sticky.filter((sticky, i) => {
+      return i !== index
+    });
+    setSticky(removeSticky)
+  }
 
-    function handleDelete(index) {
-      const removeSticky = sticky.filter((sticky, i) => {
-        return i !== index
-      });
-      setSticky(removeSticky)
-    }
-
-    function randomColor() {
-      const colors = ['#fdba74','#7dd3fc','#fcd34d','#f0abfc','#86efac','#fca5a5'];
-      const randomColor = Math.floor(Math.random() * colors.length)
-      return colors[randomColor]
-    }
+  function randomColor() {
+    const colors = ['#fdba74', '#7dd3fc', '#fcd34d', '#f0abfc', '#86efac', '#fca5a5'];
+    const randomColor = Math.floor(Math.random() * colors.length)
+    return colors[randomColor]
+  }
 
 
 
   return (
     <>
-    <input 
-    value={sinput}
-    onChange={handleChange}
-    placeholder='add sticky'
-    ></input>
+      <input
+        value={sinput}
+        onChange={handleChange}
+        placeholder='add sticky'
+      ></input>
 
-    <button onClick={handleAdd}>+</button>
-
-    {
-      sticky.map((stick, index) => (
-        <div className='sticky-wrapper' key={index} style={{backgroundColor: stick.color}}>
-          <h2>{stick.sinput}</h2>
-          <button onClick={() => handleDelete(index)}>delete</button>
-        </div>
-      ))
-    }
-
+      <button onClick={handleAdd}>+</button>
+      <div className='sticky-container'>
+        {
+          sticky.map((stick, index) => (
+            <div className='sticky-wrapper' key={index} style={{ backgroundColor: stick.color }}>
+              <h2>{stick.sinput}</h2>
+              <button onClick={() => handleDelete(index)}>delete</button>
+            </div>
+          ))
+        }
+      </div>
     </>
   )
 }

@@ -26,6 +26,7 @@ const Checklist = () => {
         });
         setTodo(removeItem)
     }
+    
 
   return (
     <>

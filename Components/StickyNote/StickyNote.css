@@ -1,6 +1,14 @@
 .sticky-wrapper{
     border: solid 2px;
-    height: 200px;
+    height: 250px;
+    width: 210px;
     border-radius: 10px;
     margin: 10px;
+}
+
+.sticky-container{
+    width: 1000px;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
 }
