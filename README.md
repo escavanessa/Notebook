@@ -6,6 +6,8 @@ Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+
 THE GOAL 
 I have always wnated to make a sort of notebook/ productivity tracker. I feel like there are some core function in a notebook type app that are essential to understand like CRUD and saving onto the local device. I wanted the user to be able to make sticky notes, have a checklist with the basic functions like adding and deleting. I also want the user to be able to 'add' notebooks and add notes into the notebooks. Generally i would like for the app to be really customizable but we will see how far I get 
 
