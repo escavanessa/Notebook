@@ -1,13 +1,16 @@
 import Checklist from '../Components/CheckList/Checklist'
-import StickyNote from '../Components/StickyNote/StickyNote'
+
+import Notebook from '../Components/notebook/Notebook'
 import './App.css'
 
+//i removed the stickynote component for the time being
 
 function App() {
   return (
     <>
     <Checklist />
-    <StickyNote />
+
+    <Notebook />
     </>
   )
 }
