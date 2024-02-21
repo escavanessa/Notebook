@@ -19,5 +19,5 @@ const PatientManager = {
 
 }
 
-PatientManager.addPatient("vanessa", 24, 'November 30th 1999');
-PatientManager.displayPatients();
+
+export default PatientManager
