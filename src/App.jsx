@@ -1,5 +1,5 @@
 
-import Tracker from '../Components/Tracker/Tracker'
+import Patients from '../Components/Patients'
 import './App.css'
 
 //i removed the stickynote component for the time being
@@ -7,7 +7,7 @@ import './App.css'
 function App() {
   return (
     <>
-    <Tracker />
+    <Patients />
     </>
   )
 }
