@@ -1,23 +1,35 @@
 import React, { useState } from 'react'
 
 const Patients = () => {
-const [resident, setResident] = useState('');
+const [resident, setResident] = useState({
+  name: '',
+});
 const [list, setList] = useState([]);
 
-function addResident() {
-  setList([...list])
-  console.log(list)
+function addResident(resident) {
+  setList([...list, resident])
+}
+
+function handleChange(resident) {
+  setResident({name: resident})
 }
 
 
   return (
     <>
     <input 
-    value={resident}
+    value={resident.name}
     placeholder='Resident Name'
-    onChange={e => setResident(e.target.value)}
+    onChange={(e) => handleChange(e.target.value)}
     />
-    <button onClick={addResident}>Add Resident</button>
+    <button onClick={() => addResident(resident)}>Add Resident</button>
+
+    {
+      list.map((res, index) => {
+        return <div key={index}>{res.name}</div>
+      })
+    }
+
     </>
   )
 }
