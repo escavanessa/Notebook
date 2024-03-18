@@ -1,10 +1,17 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
+import Residents from './Residents';
+import ActiveRes from './ActiveRes';
 
 const Patients = () => {
 const [resident, setResident] = useState({
   name: '',
 });
 const [list, setList] = useState([]);
+const [active, setActive] = useState({});
+
+
+
 
 function addResident(resident) {
   setList([...list, resident])
@@ -25,11 +32,11 @@ function handleChange(resident) {
     <button onClick={() => addResident(resident)}>Add Resident</button>
 
     {
-      list.map((res, index) => {
-        return <div key={index}>{res.name}</div>
+      list.map((resident, index) => {
+        return <Residents key={index} resident={resident} onClick={() => {setActive(resident)}}/>
       })
-    }
-
+    } 
+    <ActiveRes active={active}/>
     </>
   )
 }
